@@ -6,7 +6,7 @@ public class Processor {
     //Clone mouse for new mouse
     public Mouse newMouse;
     private Devices devices;
-    private Mouse mouse;
+    public Mouse mouse;
     private Keyboard keyboard;
     private Usb usb;
     private Memory memory;

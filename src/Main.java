@@ -13,9 +13,8 @@ public class Main {
         int typeOfCase;
         String a;
         int b;
-        System.out.println("Cloned mouse ID "+processor.newMouse.id+"Cloned mouse Status :"+ processor.newMouse.status);
         System.out.println("What did you do?");
-        System.out.println("1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard 6- USB handling 7- What devices are connected");
+        System.out.println("1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard 6- USB handling 7- What devices are connected 8- Clone mouse to newMouse");
         while ((typeOfCase = scanner.nextInt()) != 0) {
             switch (typeOfCase) {
                 case 1:
@@ -47,6 +46,10 @@ public class Main {
                     break;
                 case 7:
                     processor.connected();
+                    break;
+                case 8:
+                    System.out.println("Original mouse ID "+processor.mouse.id+" Original mouse Status :"+ processor.mouse.status);
+                    System.out.println("Cloned mouse ID "+processor.newMouse.id+" Cloned mouse Status :"+ processor.newMouse.status);
                     break;
                 default:
                     System.out.println("No action found");
