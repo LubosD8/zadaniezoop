@@ -2,7 +2,7 @@ import computer.Processor;
 
 import java.util.Scanner;
 
-public class Main {
+public class Monitor {
     public static void main(String[] args) {
         Processor processor = new Processor();
         processor.initialize();
