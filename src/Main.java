@@ -1,6 +1,4 @@
 import computer.Processor;
-import inputDevices.*;
-
 import java.util.Scanner;
 
 public class Main {
@@ -15,7 +13,7 @@ public class Main {
         int typeOfCase;
         String a;
         int b;
-        //System.out.println("WTFFF"+processor.newMouse.id);
+        System.out.println("Cloned mouse ID "+processor.newMouse.id+"Cloned mouse Status :"+ processor.newMouse.status);
         processor.connected();
         System.out.println("What did you do?");
         System.out.println("1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard 6- USB handling");

@@ -19,6 +19,7 @@ public class Processor {
         mouse = new Mouse();
         keyboard = new Keyboard();
         usb = new Usb();
+        newMouse= new Mouse(mouse);
     }
 
     public void intializeIds() {
@@ -112,5 +113,5 @@ public class Processor {
         usb.isConnected();
     }
     //Clone mouse for new mouse
-    //public Mouse newMouse = new Mouse(mouse);
+    public Mouse newMouse;
 }
