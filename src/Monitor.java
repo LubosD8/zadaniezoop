@@ -1,10 +1,12 @@
-import computer.Processor;
+import computer.*;
 
 import java.util.Scanner;
 
 public class Monitor {
     public static void main(String[] args) {
         Processor processor = new Processor();
+        Memory memory = new Memory();
+        processor.setMemory(memory);
         processor.initialize();
         processor.intializeIds();
         processor.initializeMemory();

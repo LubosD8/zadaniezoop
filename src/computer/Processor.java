@@ -13,10 +13,12 @@ public class Processor {
     private Memory memory;
     private Webcam webcam;
 
+    public void setMemory(Memory memory) {
+        this.memory = memory;
+    }
     //Initialize memory
     public void initialize() {
         devices = new Devices();
-        memory = new Memory();
         mouse = new Mouse();
         keyboard = new Keyboard();
         usb = new Usb();
