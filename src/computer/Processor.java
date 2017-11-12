@@ -34,8 +34,9 @@ public class Processor {
     }
 
     private void reset(int idOfDevice) {
-        memory.place[idOfDevice][0] = -1;
-        memory.place[idOfDevice][1] = -1;
+        int place[][]= memory.getPlace();
+        place[idOfDevice][0] = -1;
+        place[idOfDevice][1] = -1;
         System.out.println("Device with ID: " + idOfDevice + " was successfully disconnected");
     }
     private void connectedSuccessfuly(int idOfDevice) {
@@ -44,9 +45,11 @@ public class Processor {
 
     public void disconnect(int idOfDevice) {
         int a = 0;
-        for (int i = 0; i < 10; i++) {
+        int place[][]= memory.getPlace();
+        int n = memory.getCapacity();
+        for (int i = 0; i < n; i++) {
             a++;
-            if (memory.place[i][0] == idOfDevice) {
+            if (place[i][0] == idOfDevice) {
                 switch (idOfDevice) {
                     case 0:
                         if (usb.connectionStatus == 0)
@@ -76,33 +79,35 @@ public class Processor {
                 break;
             }
         }
-        if (a == 10)
+        if (a == n)
             System.out.println("No device found");
     }
 
     public void connect(int idOfDevice) {
-        for (int i = 0; i < 10; i++) {
-            if (memory.place[i][0] == idOfDevice) {
+        int place[][]= memory.getPlace();
+        int n= memory.getCapacity();
+        for (int i = 0; i < n ; i++) {
+            if (place[i][0] == idOfDevice) {
                 System.out.println("Device already connected");
             } else {
                 switch (idOfDevice) {
                     case 0:
-                        memory.place[idOfDevice][0] = idOfDevice;
+                        place[idOfDevice][0] = idOfDevice;
                         usb.connectionStatus = 1;
                         connectedSuccessfuly(idOfDevice);
                         break;
                     case 1:
-                        memory.place[idOfDevice][0] = idOfDevice;
+                        place[idOfDevice][0] = idOfDevice;
                         mouse.connectionStatus = 1;
                         connectedSuccessfuly(idOfDevice);
                         break;
                     case 2:
-                        memory.place[idOfDevice][0] = idOfDevice;
+                        place[idOfDevice][0] = idOfDevice;
                         keyboard.connectionStatus = 1;
                         connectedSuccessfuly(idOfDevice);
                         break;
                     case 3:
-                        memory.place[idOfDevice][0] = idOfDevice;
+                        place[idOfDevice][0] = idOfDevice;
                         webcam.connectionStatus = 1;
                         connectedSuccessfuly(idOfDevice);
                         break;
@@ -126,24 +131,29 @@ public class Processor {
     }
 
     public void initializeMemory() {
-        for (int i = 0; i < 10; i++) {
-            memory.place[i][0] = -1;
-            memory.place[i][1] = -1;
+        int place[][]= memory.getPlace();
+        int n= memory.getCapacity();
+        for (int i = 0; i < n; i++) {
+            place[i][0] = -1;
+            place[i][1] = -1;
         }
-        memory.place[mouse.id][0] = mouse.id;
-        memory.place[keyboard.id][0] = keyboard.id;
-        memory.place[usb.id][0] = usb.id;
+        place[mouse.id][0] = mouse.id;
+        place[keyboard.id][0] = keyboard.id;
+        place[usb.id][0] = usb.id;
     }
 
     private void writeToMemory(int id, int status) {
-        memory.place[id][1] = status;
+        int place[][]= memory.getPlace();
+        place[id][1] = status;
     }
 
     public void printMemory() {
+        int place[][]= memory.getPlace();
+        int n= memory.getCapacity();
         System.out.println("ID 0 = USB, ID 1 = Mouse, ID 2 = Keyboard, ID 3 = Webcam");
-        for (int i = 0; i < 5; i++) {
-            System.out.println("ID in memory:" + memory.place[i][0] + "  Status: " + memory.place[i][1] + "\n");
-            memory.place[i][1] = -1;
+        for (int i = 0; i < n; i++) {
+            System.out.println("ID in memory:" + place[i][0] + "  Status: " + place[i][1] + "\n");
+            place[i][1] = -1;
         }
     }
 
