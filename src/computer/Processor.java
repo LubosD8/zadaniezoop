@@ -1,16 +1,16 @@
 package computer;
 
-import inputDevices.Devices;
-import inputDevices.Keyboard;
-import inputDevices.Mouse;
-import inputDevices.Usb;
+import inputDevices.*;
 
 public class Processor {
+    //Clone mouse for new mouse
+    public Mouse newMouse;
     private Devices devices;
     private Mouse mouse;
     private Keyboard keyboard;
     private Usb usb;
     private Memory memory;
+    private Webcam webcam;
 
     //Initialize memory
     public void initialize() {
@@ -19,13 +19,17 @@ public class Processor {
         mouse = new Mouse();
         keyboard = new Keyboard();
         usb = new Usb();
-        newMouse= new Mouse(mouse);
+        webcam = new Webcam();
+        newMouse = new Mouse(mouse);
     }
 
     public void intializeIds() {
         mouse.id = 1;
+        mouse.connectionStatus = 1;
         keyboard.id = 2;
+        keyboard.connectionStatus = 1;
         usb.id = 0;
+        usb.connectionStatus = 1;
     }
 
     public void initializeMemory() {
@@ -42,7 +46,7 @@ public class Processor {
         System.out.println("ID 0 = USB, ID 1 = Mouse, ID 2 = Keyboard");
         for (int i = 0; i < 5; i++) {
             System.out.println("ID in memory:" + memory.place[i][0] + "  Status: " + memory.place[i][1] + "\n");
-            memory.place[i][1]=0;
+            memory.place[i][1] = 0;
         }
     }
 
@@ -108,12 +112,11 @@ public class Processor {
     }
 
     //What is connected
-    public void connected(){
+    public void connected() {
         devices.isConnected();
         mouse.isConnected();
         keyboard.isConnected();
         usb.isConnected();
+        webcam.isConnected();
     }
-    //Clone mouse for new mouse
-    public Mouse newMouse;
 }

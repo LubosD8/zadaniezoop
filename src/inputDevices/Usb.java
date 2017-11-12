@@ -5,6 +5,9 @@ public class Usb extends Devices {
     public int freeSpace = 8192;
 
     public void isConnected() {
-        System.out.println("USB is connected");
+        if (connectionStatus == 1)
+            System.out.println("USB is connected");
+        else
+            System.out.println("USB is not connected");
     }
 }

@@ -3,7 +3,10 @@ package inputDevices;
 public class Mouse extends Devices {
 
     public void isConnected() {
-        System.out.println("Mouse is connected");
+        if (connectionStatus == 1)
+            System.out.println("Mouse is connected");
+        else
+            System.out.println("Mouse is not connected");
     }
     public Mouse(){
         id=1;

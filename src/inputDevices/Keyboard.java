@@ -4,6 +4,9 @@ public class Keyboard extends Devices {
     public String keysPressed;
 
     public void isConnected() {
-        System.out.println("Keyboard is connected");
+        if (connectionStatus == 1)
+            System.out.println("Keyboard is connected");
+        else
+            System.out.println("Keyboard is not connected");
     }
 }
