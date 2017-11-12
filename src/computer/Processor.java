@@ -40,8 +40,10 @@ public class Processor {
 
     public void printMemory() {
         System.out.println("ID 0 = USB, ID 1 = Mouse, ID 2 = Keyboard");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) {
             System.out.println("ID in memory:" + memory.place[i][0] + "  Status: " + memory.place[i][1] + "\n");
+            memory.place[i][1]=0;
+        }
     }
 
     // Mouse stuff
