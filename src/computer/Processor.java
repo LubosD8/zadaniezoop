@@ -5,6 +5,7 @@ import inputDevices.*;
 public class Processor {
     //Clone mouse for new mouse
     public Mouse newMouse;
+
     public Mouse mouse;
     private Devices devices;
     private Keyboard keyboard;
@@ -116,7 +117,6 @@ public class Processor {
     }
 
     //What is connected
-
     public void connected() {
         devices.isConnected();
         mouse.isConnected();
