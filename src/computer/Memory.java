@@ -1,6 +1,6 @@
 package computer;
 
-final class Memory {
+final public class Memory {
    private int capacity = 5;
     private int[][] place = new int[capacity][2];
 
