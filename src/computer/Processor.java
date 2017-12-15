@@ -3,9 +3,8 @@ package computer;
 import inputDevices.*;
 
 public class Processor {
-    //Clone mouse for new mouse
-    public Mouse newMouse;
 
+    public Mouse newMouse;
     public Mouse mouse;
     private Devices devices;
     private Keyboard keyboard;
@@ -13,11 +12,8 @@ public class Processor {
     private Memory memory;
     private Webcam webcam;
 
-    public void setMemory(Memory memory) {
-        this.memory = memory;
-    }
-    //Initialize memory
-    public void initialize() {
+    public void memorySize(Memory memory) { this.memory = memory; }
+    public void memoryInit() {
         devices = new Devices();
         mouse = new Mouse();
         keyboard = new Keyboard();
@@ -26,7 +22,7 @@ public class Processor {
         newMouse = new Mouse(mouse);
     }
 
-    public void intializeIds() {
+    public void initIds() {
         mouse.id = 1;
         mouse.connectionStatus = 1;
         keyboard.id = 2;
@@ -85,7 +81,7 @@ public class Processor {
             System.out.println("No device found");
     }
 
-    public void connect(int idOfDevice) {
+    public void connectDevice(int idOfDevice) {
         int place[][]= memory.getPlace();
         int n= memory.getCapacity();
         for (int i = 0; i < n ; i++) {
@@ -123,8 +119,7 @@ public class Processor {
         }
     }
 
-    //What is connected
-    public void connected() {
+    public void deviceConnected() {
         devices.isConnected();
         mouse.isConnected();
         keyboard.isConnected();
@@ -153,13 +148,16 @@ public class Processor {
         int place[][]= memory.getPlace();
         int n= memory.getCapacity();
         System.out.println("ID 0 = USB, ID 1 = Mouse, ID 2 = Keyboard, ID 3 = Webcam");
+        for (int i = 0; i < n; i++)
+            System.out.println("ID in memory:" + place[i][0] + "  Status: " + place[i][1]);
+        resetMemory(n, place);
+    }
+    private void resetMemory(int n, int place[][]) {
         for (int i = 0; i < n; i++) {
-            System.out.println("ID in memory:" + place[i][0] + "  Status: " + place[i][1] + "\n");
             place[i][1] = -1;
         }
     }
 
-    // Mouse stuff
     public void clicked(int action) {
         mouse.status = action;
         writeToMemory(mouse.id, action);
@@ -182,7 +180,6 @@ public class Processor {
         }
     }
 
-    //Keyboard stuff
     public void pressKeys(String whatsWriten) {
         keyboard.status = 1;
         writeToMemory(keyboard.id, keyboard.status);
@@ -193,7 +190,6 @@ public class Processor {
         System.out.println(keyboard.keysPressed);
     }
 
-    //USB stuff
     public void usbInfo() {
         System.out.println("Size of USB :" + usb.size + "  Free space:" + usb.freeSpace);
     }

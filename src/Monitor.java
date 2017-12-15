@@ -6,18 +6,18 @@ public class Monitor {
     public static void main(String[] args) {
         Processor processor = new Processor();
         Memory memory = new Memory();
-        processor.setMemory(memory);
-        processor.initialize();
-        processor.intializeIds();
+        processor.memorySize(memory);
+        processor.memoryInit();
+        processor.initIds();
         processor.initializeMemory();
         System.out.println("Initialization successful");
 
         Scanner scanner = new Scanner(System.in);
         int typeOfCase;
-        String a;
         int b;
         System.out.println("What do you want to do?");
-        System.out.println("1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard 6- USB handling 7- What devices are connected 8- Clone mouse to newMouse 9- Disconnect device 10- Connect known device");
+        System.out.println("1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard ");
+        System.out.println("6- USB handling 7- What devices are connected 8- Clone mouse to newMouse 9- Disconnect device 10- Connect known device");
         while ((typeOfCase = scanner.nextInt()) != 0) {
             switch (typeOfCase) {
                 case 1:
@@ -37,7 +37,7 @@ public class Monitor {
                     break;
                 case 5:
                     System.out.println("Write what you want");
-                    a = scanner.next();
+                    String a = scanner.next();
                     processor.pressKeys(a);
                     processor.isKeyboard();
                     break;
@@ -48,7 +48,7 @@ public class Monitor {
                     processor.transfer(b);
                     break;
                 case 7:
-                    processor.connected();
+                    processor.deviceConnected();
                     break;
                 case 8:
                     System.out.println("Original mouse ID " + processor.mouse.id + " Original mouse Status :" + processor.mouse.status);
@@ -64,12 +64,14 @@ public class Monitor {
                     System.out.println("ID 0 = USB, ID 1 = Mouse, ID 2 = Keyboard, ID 3 = Webcam");
                     System.out.println("Type ID of device you want to disconnect");
                     b = scanner.nextInt();
-                    processor.connect(b);
+                    processor.connectDevice(b);
                     break;
                 default:
                     System.out.println("No action found");
                     break;
             }
+            System.out.println("\n1- Right Click 2- Left Click  3- Middle wheel 4- Print memory values 5- Press keys on keyboard");
+            System.out.println("6- USB handling 7- What devices are connected 8- Clone mouse to newMouse 9- Disconnect device 10- Connect known device");
         }
     }
 }
